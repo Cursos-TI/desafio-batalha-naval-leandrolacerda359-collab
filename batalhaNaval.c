@@ -10,7 +10,7 @@ int main() {
         {0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0}
     };
-    int navioUm[3] = {1,1,1}, navioDois[3] = {2,2,2};
+    int navioUm[3] = {1,1,1}, navioDois[3] = {2,2,2}, navioTres[3] = {3,3,3}, navioQuatro[3] = {4,4,4};
     int posInicial = 0;
 
     //Posicionamento no tabuleiro 'navioUm'
@@ -23,8 +23,22 @@ int main() {
     //Posicionamento no tabuleiro 'navioDois'
     posInicial = 6;
     for(int i=0;i<3;i++) {
-        tabuleiro[posInicial][3] = navioUm[i];
+        tabuleiro[posInicial][3] = navioDois[i];
         posInicial++;
+    }
+
+    //Posicionamento no tabuleiro 'navioTres'
+    posInicial = 0;
+    for(int i=0;i<3;i++) {
+        tabuleiro[posInicial][posInicial] = navioTres[i];
+        posInicial++;
+    }
+
+    //Posicionamento no tabuleiro 'navioQuatro'
+    posInicial = 9;
+    for(int i=0;i<3;i++) {
+        tabuleiro[posInicial][posInicial] = navioTres[i];
+        posInicial--;
     }
     
     //Exibição do tabuleiro
