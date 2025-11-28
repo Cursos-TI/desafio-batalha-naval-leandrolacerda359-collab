@@ -11,36 +11,70 @@ int main() {
         {0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0}
     };
     int navioUm[3] = {1,1,1}, navioDois[3] = {2,2,2}, navioTres[3] = {3,3,3}, navioQuatro[3] = {4,4,4};
+    int habCone[3][5] = {
+        {0,0,5,0,0},
+        {0,5,5,5,0},
+        {5,5,5,5,5}
+    };
+    int habCruz[3][5] = {
+        {0,0,5,0,0},
+        {5,5,5,5,5},
+        {0,0,5,0,0}
+    };
+    int habOctaedro[3][5] = {
+        {0,0,5,0,0},
+        {0,5,5,5,0},
+        {0,0,5,0,0}
+    };
     int posInicial = 0;
+    int posInicialLin = 0;
+    int posInicialCol = 0;
 
     //Posicionamento no tabuleiro 'navioUm'
-    posInicial = 5;
-    for(int i=0;i<3;i++) {
-        tabuleiro[4][posInicial] = navioUm[i];
-        posInicial++;
-    }
+    posInicial = 5; for(int i=0;i<3;i++) {tabuleiro[4][posInicial] = navioUm[i];posInicial++;}
 
     //Posicionamento no tabuleiro 'navioDois'
-    posInicial = 6;
-    for(int i=0;i<3;i++) {
-        tabuleiro[posInicial][3] = navioDois[i];
-        posInicial++;
-    }
+    posInicial = 6; for(int i=0;i<3;i++) {tabuleiro[posInicial][6] = navioDois[i];posInicial++;}
 
     //Posicionamento no tabuleiro 'navioTres'
-    posInicial = 0;
-    for(int i=0;i<3;i++) {
-        tabuleiro[posInicial][posInicial] = navioTres[i];
-        posInicial++;
-    }
+    posInicial = 0; for(int i=0;i<3;i++) {tabuleiro[posInicial][posInicial] = navioTres[i];posInicial++;}
 
     //Posicionamento no tabuleiro 'navioQuatro'
-    posInicial = 9;
-    for(int i=0;i<3;i++) {
-        tabuleiro[posInicial][posInicial] = navioTres[i];
-        posInicial--;
+    posInicial = 9; for(int i=0;i<3;i++) {tabuleiro[posInicial][posInicial] = navioTres[i];posInicial--;}
+
+    //Posicionamento da habilidade Cone no tabuleiro
+    posInicialLin = 0; posInicialCol = 5;
+    for(int lin=0;lin<3;lin++) {
+        for(int col=0;col<5;col++){
+            tabuleiro[posInicialLin][posInicialCol] = habCone[lin][col];
+            posInicialCol++;
+        }
+        posInicialCol = 5;
+        posInicialLin++;
     }
-    
+
+    //Posicionamento da habilidade Cruz no tabuleiro
+    posInicialLin = 4; posInicialCol = 0;
+    for(int lin=0;lin<3;lin++) {
+        for(int col=0;col<5;col++){
+            tabuleiro[posInicialLin][posInicialCol] = habCruz[lin][col];
+            posInicialCol++;
+        }
+        posInicialCol = 0;
+        posInicialLin++;
+    }
+
+    //Posicionamento da habilidade Octaedro no tabuleiro
+    posInicialLin = 7; posInicialCol = 0;
+    for(int lin=0;lin<3;lin++) {
+        for(int col=0;col<5;col++){
+            tabuleiro[posInicialLin][posInicialCol] = habCruz[lin][col];
+            posInicialCol++;
+        }
+        posInicialCol = 0;
+        posInicialLin++;
+    }
+
     //Exibição do tabuleiro
     printf(" *** BATALHA NAVAL ***\n\n");
     for(int lin=0;lin<10;lin++) {
